@@ -10,6 +10,10 @@
         color : #1E3269;  
      }
      
+ /* hover는 사용자가 마우스 커서를 해당 요소 위에 살짝 올려놓았을때 적용되는것*/
+li:hover {
+ background : #dbeafe;
+}
      
 /* class card 설정 */     
  .card {
