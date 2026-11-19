@@ -28,3 +28,19 @@ li:hover {
    
 
  }
+ 
+ 
+ 
+ 
+ /*index2.html css*/
+ 
+.highlight {
+     background-color: green;
+     color : red;    
+ }
+ 
+ 
+ #emp {
+    color : red;
+    font-size: 100px;
+   }

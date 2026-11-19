@@ -97,7 +97,7 @@ input.value = "";
 	"너는 충분히 잘하고있어!🌷 "	
  ];
 
-//2. 선택된 포춘을 저장하는 포춘변수를 초기화
+//2. 뽑은 포춘을 저장하는 포춘변수를 초기화
 // let인 이유는 뽑기 버튼을 누를때마다 변수 안에 들어가는 값이 다르기때문 
 let currentfortune = "";
 //3. 실제 포춘을 뽑는 함수 정의 drawFortune
@@ -106,23 +106,59 @@ function drawFortune() {
 // 난수 만들기 -> 임의의 정수 생성
 // math.floor(3.5) = 3 : 소수점 아래를 무조건 버린다.  
 // math.random() : 0.0*length <= 난수 <1.0*length
-const index = math.floor(math.random()*fortunes.length)
+const index = Math.floor(Math.random()*fortunes.length)
  // 현재 랜덤 행운 뽑기
  currentfortune = fortunes[index];
  // 현재 뽑은 운세의 내용을 출력 (찾는값을 textcontent 값으로 보이게 만들기)
- document.querySelector("#result").textContent = 
- 
+ document.querySelector("#result").textContent = currentfortune;
+
  }
 //4. 실제 포춘을 저장하는 함수 정의 saveFortune
 function saveFortune() {
+	//1.currentFortune 값이 있는지 먼저 조사하기 -> 없으면 실행 취소
+	//2.값이 있으면 localStorage 웹브라우저 저장소에 영구저장 (localStrorage.setItem 사용)
+
+  if(currentfortune === "") {
+	alert("먼저 행운을 뽑아주세요!");
+	return; // 조건이 맞으면 여기서 함수를 즉시 종료하고 아래 코드는 실행하지 말라는 의미 
+  } 
+  
+    localStorage.setItem(
+		"myFortune", currentfortune
+	);
 	
+	//실행여부 알려주기
+	alert("행운을 저장했어요!")
+
+
 }
 //5. 저장된 포춘을 불러오는 함수 정의 loadFortune
 function loadFortune() {
+	//1.localStrorage에서 값을 가지오 온다.(localStrorage.getItem)
+	const saved = localStorage.getItem("myFortune");
+	//2. 읽어올 값이 비어있으면 "저장된 행운 없음" 출력
+	if(saved === null) {
+		alert("저장된 행운이 없어요!");
+		return;
+	}
+	
+	//3. 읽어올 값이 있으면 #result태그에 읽어온 값을 출력하기
+	currentfortune = saved;
+	
+	document.querySelector("#result").textContent= "저장된 행운:" + saved;
+	// saved 대신 currentfortune 적어도 동일한 값이 나온다. 
+	
 	
 }
 //6. 저장된 포춘 정보를 삭제하는 함수 정의 deleteFortune
 
 function deleteFortune() {
+	//1. localstorage 삭제하기. (remove.ltem)
+	localStorage.removeItem("myFortune");
+	//2. 현재 currentfortune 삭제하기 
+	currentfortune ="";
+	//3. result 안에 출력된 값 삭제하기
+	document.querySelector("#result").textContent = "저장된 행운을 삭제했어요!";
 	
+	alert("삭제완료!"); 
 }
