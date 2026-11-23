@@ -1,39 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 나의 활동 기록</title>
+    <!-- link 태그로 외부 css 파일 style.css 연결 -->
+    <link rel="stylesheet" href ="./css/style.css">
+    
 </head>
 <body>
-	<!-- 헤더 -->
-	<header>
-	  <h1>보물찾기 게임</h1>
-	  <p>숨겨진 보물을 찾아보세요!</p>
-	</header>
-	
-	<!-- 메인 -->
-	<main>
-	  <section>
-	   <lable for="palyerName">플레이어 이름</lable>
-	   <input id="playerName" type="text" placeholder="이름을 입력하세요">
-	   <button>확인</button>
-	   
-	   <h2 class="game-card" >게임 안내</h2>
-	   <p id=score>버튼을 눌러 게임을 시작합니다.</p>
-	   <button>시작하기</button>
-	  </section>
-	</main>
-	
-	<!-- 푸터 -->
-	<footer>
-	  <p>나의 첫 웹게임</p>
-	  <article class="game-card">
-	    <h2>클릭 점수 게임</h2>
-	    <p>버튼을 눌러 점수를 모아 보세요.</p>
-	    <button>게임 시작</button>
-	  </article>
-	</footer>
-    <script src="/js/game.js"></script>
+   <!--  나의 라이프 대시보드 블럭--> -->
+   <div class="page">
+    <header class="topbar">
+      <!-- 가운데 큰 글자로 나의 라이프 대시보드 제목 출력 -->
+      <div >
+        <p class="eyebrow"> MY DAILY SPACE</p>
+        <h1>나의 라이프 대시보드</h1>
+        <p class="subtitle">오늘 해야 할 일을 차근차근 완성해 봐요.</p>
+      </div>
+      <div class="today-box">
+        <!--한줄 단어들을 각각 다른 디자인으로 꾸미고 싶을 때 <span> 태그를 사용 -->
+        <span class="today-lable">TODAY</span> <!--TODAY제목 -->
+        <span id="todayDate">2026.11.23</span> <!--실제날짜 -->
+      </div>
+    </header>
+    
+    <!-- 가운데 실제 컨텐츠 -->
+    <main>
+    <!-- main 영역 중 첫째줄 첫번째 섹션 -->
+      <section class="focus-panel">
+        <div>
+          <p class="eyebrow"> TODAY'S FOCUS </p>
+          <h2>작은 한 걸음이 큰 변화를 만들어요</h2>
+          <p>오늘의 할 일을 등록하고 하나씩 완료해 보세요.</p>
+        </div>
+        <div class="focus-mark" aria-hidden>√</div>
+      </section>
+      
+      <!-- 오늘의 현황 영역 -->
+      <section class="summary-grid" 
+               aria-lable="오늘의 현황">
+        <!--카드 배치를 할때는 주로 article을 사용 -->
+        <article class = "summary-card">
+          <span class ="summary-lable">전체 할 일</span>
+          <strong id="totalCount">0</strong>
+          <span class="summary-unit">개</span>
+        </article> 
+                
+      </section>
+    </main>
+    
+    <!-- 회사소개 저작권 기타 사이트맵 꼬리영역이 출력 : footer -->
+    <footer>
+      <p>나의 라이프 대시보드 - 오늘도 즐겁게 열심히 해냈어요!</p>
+    </footer>
+   </div>
+<script src="./js/app.js"></script>
 </body>
 </html>
